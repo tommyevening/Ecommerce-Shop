@@ -12,8 +12,7 @@ spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 
 spring.jpa.defer-datasource-initialization=true
-spring.sql.init.mode=never
-
+spring.sql.init.mode=always
 
 spring.thymeleaf.prefix=classpath:/templates/
 spring.thymeleaf.suffix=.html

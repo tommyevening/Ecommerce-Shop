@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Rejestracja użytkownika</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .registration-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="registration-form">
+        <h2 class="text-center mb-4">Rejestracja użytkownika</h2>
+
+        <div th:if="${successMessage}" class="alert alert-success" role="alert">
+            <span th:text="${successMessage}"></span>
+        </div>
+
+        <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+            <span th:text="${errorMessage}"></span>
+        </div>
+
+        <form th:action="@{/register}" th:object="${client}" method="post">
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="firstName">Imię:</label>
+                    <input type="text" class="form-control" id="firstName" th:field="*{firstName}" required>
+                    <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error-message"></span>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label for="lastName">Nazwisko:</label>
+                    <input type="text" class="form-control" id="lastName" th:field="*{lastName}" required>
+                    <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="error-message"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" th:field="*{email}" required>
+                <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="phoneNumber">Numer telefonu:</label>
+                <input type="tel" class="form-control" id="phoneNumber" th:field="*{phoneNumber}">
+                <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="error-message"></span>
+            </div>
+
+            <h4 class="mt-4 mb-3">Adres</h4>
+
+            <div class="form-group">
+                <label for="street">Ulica:</label>
+                <input type="text" class="form-control" id="street" th:field="*{street}" required>
+                <span th:if="${#fields.hasErrors('street')}" th:errors="*{street}" class="error-message"></span>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="city">Miasto:</label>
+                    <input type="text" class="form-control" id="city" th:field="*{city}" required>
+                    <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}" class="error-message"></span>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label for="postalCode">Kod pocztowy:</label>
+                    <input type="text" class="form-control" id="postalCode" th:field="*{postalCode}" required>
+                    <span th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}" class="error-message"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="country">Kraj:</label>
+                <input type="text" class="form-control" id="country" th:field="*{country}" required>
+                <span th:if="${#fields.hasErrors('country')}" th:errors="*{country}" class="error-message"></span>
+            </div>
+
+            <div class="form-group text-center mt-4">
+                <button type="submit" class="btn btn-primary">Zarejestruj się</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

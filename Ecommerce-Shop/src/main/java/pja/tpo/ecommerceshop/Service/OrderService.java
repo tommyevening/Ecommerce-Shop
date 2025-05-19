@@ -2,6 +2,7 @@ package pja.tpo.ecommerceshop.Service;
 
 
 import org.springframework.stereotype.Service;
+import pja.tpo.ecommerceshop.Model.DTOs.OrderSummaryDTO;
 import pja.tpo.ecommerceshop.Model.Order;
 import pja.tpo.ecommerceshop.Repository.OrderRepository;
 
@@ -23,5 +24,13 @@ public class OrderService {
 
     public List<Order> getAllOrders() {
         return orderRepository.findAll();
+    }
+
+    public List<OrderSummaryDTO> getAllOrderDTOs() {
+        return orderRepository.findAllOrderDTOs();
+    }
+
+    public OrderSummaryDTO getOrderDTOById(Long id) {
+        return orderRepository.findOrderDTOById(id);
     }
 }

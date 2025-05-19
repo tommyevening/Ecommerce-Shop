@@ -3,10 +3,9 @@ package pja.tpo.ecommerceshop.Controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pja.tpo.ecommerceshop.Model.Client;
+import pja.tpo.ecommerceshop.Model.DTOs.ClientCreateDTO;
 import pja.tpo.ecommerceshop.Service.ClientService;
 
 import java.util.List;
@@ -31,6 +30,12 @@ public class ClientController {
     public ResponseEntity<List<Client>> getAllClients() {
         List<Client> clients = clientService.getAllClients();
         return ResponseEntity.ok(clients);
+    }
+
+    @PostMapping
+    public ResponseEntity<Client> createClient(@RequestBody ClientCreateDTO client) {
+        Client createdClient = clientService.createClient(client);
+        return ResponseEntity.ok(createdClient);
     }
 
 }
