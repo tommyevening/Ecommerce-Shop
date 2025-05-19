@@ -26,7 +26,7 @@ public class RegisterationController {
 
     @GetMapping
     public String register(Model model) {
-        model.addAttribute("client", new ClientCreateDTO());
+        model.addAttribute("clientCreateDTO", new ClientCreateDTO());
         return "register";
     }
 
@@ -36,28 +36,19 @@ public class RegisterationController {
                                  RedirectAttributes redirectAttributes,
                                  Model model) {
 
-        // Sprawdzenie błędów walidacji
-        if (bindingResult.hasErrors()) {
-            // Jeśli są błędy walidacji, wracamy do formularza
+        if (bindingResult.hasErrors()) { //validation errors
             return "register";
         }
 
         try {
-            // Wywołanie serwisu do zapisania klienta
             Client savedClient = clientService.createClient(clientDTO);
-
-            // Dodanie komunikatu sukcesu
             redirectAttributes.addFlashAttribute("successMessage",
                     "Rejestracja zakończona pomyślnie! Konto zostało utworzone.");
 
-            // Przekierowanie na stronę z komunikatem sukcesu
             return "redirect:/register?success";
 
         } catch (Exception e) {
-            // W przypadku błędu, dodajemy komunikat błędu
             model.addAttribute("errorMessage", "Wystąpił błąd podczas rejestracji: " + e.getMessage());
-
-            // Wracamy do formularza z komunikatem błędu
             return "register";
         }
     }

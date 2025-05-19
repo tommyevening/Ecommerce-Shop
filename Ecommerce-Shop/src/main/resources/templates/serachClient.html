@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wyszukiwanie klientów</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="search-form">
+        <h2 class="text-center mb-4">Wyszukiwanie klientów</h2>
+
+        <form th:action="@{/clients/search}" method="get">
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="firstName">Imię:</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" th:value="${param.firstName}">
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label for="lastName">Nazwisko:</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" th:value="${param.lastName}">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" th:value="${param.email}">
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label for="phoneNumber">Numer telefonu:</label>
+                    <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" th:value="${param.phoneNumber}">
+                </div>
+            </div>
+
+            <div class="form-group text-center mt-4">
+                <button type="submit" class="btn btn-primary">Wyszukaj</button>
+                <button type="reset" class="btn btn-secondary ms-2">Wyczyść</button>
+            </div>
+        </form>
+
+        <div class="results-table" th:if="${clients != null && !clients.isEmpty()}">
+            <h3>Wyniki wyszukiwania</h3>
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
+                    <th>Email</th>
+                    <th>Numer telefonu</th>
+                    <th>Adres</th>
+                    <th>Akcje</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="client : ${clients}">
+                    <td th:text="${client.id}"></td>
+                    <td th:text="${client.firstName}"></td>
+                    <td th:text="${client.lastName}"></td>
+                    <td th:text="${client.email}"></td>
+                    <td th:text="${client.phoneNumber}"></td>
+                    <td th:text="${client.adress != null ? client.adress.street + ', ' + client.adress.city : '-'}"></td>
+                    <td>
+                        <a th:href="@{/clients/{id}(id=${client.id})}" class="btn btn-sm btn-info">Szczegóły</a>
+                        <a th:href="@{/clients/{id}/edit(id=${client.id})}" class="btn btn-sm btn-warning">Edytuj</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="alert alert-info mt-4" th:if="${clients != null && clients.isEmpty()}">
+            Nie znaleziono klientów spełniających podane kryteria.
+        </div>
+    </div>
+</div>
+</body>
+</html>

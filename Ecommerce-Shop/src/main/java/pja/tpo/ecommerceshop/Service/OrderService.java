@@ -1,11 +1,16 @@
 package pja.tpo.ecommerceshop.Service;
 
 
+import org.aspectj.weaver.ast.Or;
 import org.springframework.stereotype.Service;
+import pja.tpo.ecommerceshop.Model.DTOs.OrderItemDTO;
 import pja.tpo.ecommerceshop.Model.DTOs.OrderSummaryDTO;
 import pja.tpo.ecommerceshop.Model.Order;
+import pja.tpo.ecommerceshop.Model.OrderItem;
+import pja.tpo.ecommerceshop.Repository.OrderItemRepository;
 import pja.tpo.ecommerceshop.Repository.OrderRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,9 +18,11 @@ import java.util.Optional;
 public class OrderService {
 
     private final OrderRepository orderRepository;
+    private final OrderItemRepository orderItemRepository;
 
-    public OrderService(OrderRepository orderRepository) {
+    public OrderService(OrderRepository orderRepository, OrderItemRepository orderItemRepository) {
         this.orderRepository = orderRepository;
+        this.orderItemRepository = orderItemRepository;
     }
 
     public Optional<Order> getOrderById(Long id) {
@@ -32,5 +39,35 @@ public class OrderService {
 
     public OrderSummaryDTO getOrderDTOById(Long id) {
         return orderRepository.findOrderDTOById(id);
+    }
+
+    public OrderSummaryDTO getOrderSummary(Long orderID){
+
+        Order order = orderRepository.findOrderById(orderID).get();
+        List<OrderItem> orderItems = orderItemRepository.findByOrderId(orderID);
+
+        OrderSummaryDTO orderSummary = new OrderSummaryDTO();
+        orderSummary.setId(order.getId());
+        orderSummary.setClientFirstName(order.getClient().getFirstName());
+        orderSummary.setClientLastName(order.getClient().getLastName());
+        orderSummary.setOrderDate(order.getOrderDate());
+        orderSummary.setTotalAmount(order.getTotalAmount());
+        orderSummary.setStatus(order.getStatus());
+
+        List<OrderItemDTO> orderItemDTOs = new ArrayList<>();
+
+        for (OrderItem item : orderItems) {
+            OrderItemDTO orderItemDTO = new OrderItemDTO();
+            orderItemDTO.setId(item.getId());
+            orderItemDTO.setOrderId(item.getOrder().getId());
+            orderItemDTO.setProductId(item.getProduct().getId());
+            orderItemDTO.setQuantity(item.getQuantity());
+            orderItemDTO.setPriceAtPurchase(item.getPriceAtPurchase());
+            orderItemDTOs.add(orderItemDTO);
+        }
+
+        orderSummary.setOrderItems(orderItemDTOs);
+
+        return orderSummary;
     }
 }

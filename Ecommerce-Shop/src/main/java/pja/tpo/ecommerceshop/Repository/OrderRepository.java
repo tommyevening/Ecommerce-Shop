@@ -22,4 +22,6 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     @Query("SELECT new pja.tpo.ecommerceshop.Model.DTOs.OrderSummaryDTO(o.id, c.firstName, c.lastName, o.orderDate, o.totalAmount, o.status) " +
             "FROM Order o JOIN o.client c WHERE o.id = :orderId")
     OrderSummaryDTO findOrderDTOById(@Param("orderId") Long orderId);
+
+
 }
