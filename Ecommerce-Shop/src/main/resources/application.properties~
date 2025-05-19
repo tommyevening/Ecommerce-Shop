@@ -1,0 +1,16 @@
+spring.application.name=Ecommerce-Shop
+
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2
+
+spring.datasource.username=sa
+spring.datasource.password=
+
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto=create
+spring.jpa.defer-datasource-initialization=true
+spring.sql.init.mode=always
+spring.jpa.show-sql=true
+
+spring.thymeleaf.prefix=classpath:/templates/
+spring.thymeleaf.suffix=.html
