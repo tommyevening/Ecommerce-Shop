@@ -1,0 +1,4 @@
+2025-05-20 06:00:55.628846+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "SELECT * [*]p.name, p.category, p.price FROM Product p"
+Syntax error in SQL statement "SELECT * [*]p.name, p.category, p.price FROM Product p"; SQL statement:
+SELECT * p.name, p.category, p.price FROM Product p [42000-232]
