@@ -20,12 +20,12 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping
+   /* @GetMapping
     public ResponseEntity<List<ProductGetDTO>> getAllProducts() {
         List<ProductGetDTO> products = productService.getAllProducts();
 
         if (products.isEmpty()) return ResponseEntity.noContent().build();
 
         return ResponseEntity.ok(products);
-    }
+    }*/
 }

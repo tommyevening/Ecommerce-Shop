@@ -59,11 +59,9 @@ public class OrderService {
 
         for (OrderItem item : orderItems) {
 
-            ProductGetDTO productGetDTO = new ProductGetDTO(
-                    item.getProduct().getName(),
-                    item.getProduct().getCategory(),
-                    item.getProduct().getPrice()
-            );
+            ProductGetDTO productGetDTO = new ProductGetDTO(){
+                
+            };
             OrderItemDTO orderItemDTO = new OrderItemDTO();
             orderItemDTO.setId(item.getId());
             orderItemDTO.setOrderId(item.getOrder().getId());

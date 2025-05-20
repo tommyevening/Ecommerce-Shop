@@ -1,2 +1,23 @@
-package pja.tpo.ecommerceshop.Service;public class ProductService {
+package pja.tpo.ecommerceshop.Service;
+
+
+import org.springframework.stereotype.Service;
+import pja.tpo.ecommerceshop.DTOs.ProductGetDTO;
+import pja.tpo.ecommerceshop.Repository.ProductRepository;
+
+import java.util.List;
+
+@Service
+public class ProductService {
+
+    private final ProductRepository productRepository;
+
+    public ProductService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
+
+//    public List<ProductGetDTO> getAllProducts() {
+//        return productRepository.findAllProducts();
+//    }
+
 }
