@@ -48,12 +48,12 @@ INSERT INTO Orders (client_id, order_date, total_amount, status, payment_id) VAL
                                                                                   (5, '2025-05-19 15:30:00', 4299.97, 'completed', 5);
 
 -- Wstawianie elementów zamówień
-INSERT INTO OrderItem (order_id, product_id, quantity, price_at_purchase) VALUES
-                                                                              (1, 1, 1, 1999.99),
-                                                                              (1, 3, 1, 129.99),
-                                                                              (2, 2, 1, 3999.99),
-                                                                              (3, 4, 1, 299.99),
-                                                                              (3, 5, 1, 89.98),
-                                                                              (4, 6, 1, 199.99),
-                                                                              (5, 1, 2, 1999.99),
-                                                                              (5, 3, 2, 129.99);
+INSERT INTO Order_Item (order_id, product_id, quantity, price_at_purchase) VALUES
+(1, 1, 1, 1999.99),
+(1, 3, 1, 129.99),
+(2, 2, 1, 3999.99),
+(3, 4, 1, 299.99),
+(3, 5, 1, 89.98),
+(4, 6, 1, 199.99),
+(5, 1, 2, 1999.99),
+(5, 3, 2, 129.99);

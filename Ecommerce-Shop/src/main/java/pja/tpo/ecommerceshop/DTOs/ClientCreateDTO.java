@@ -1,4 +1,4 @@
-package pja.tpo.ecommerceshop.Model.DTOs;
+package pja.tpo.ecommerceshop.DTOs;
 
 
 import jakarta.validation.constraints.NotBlank;

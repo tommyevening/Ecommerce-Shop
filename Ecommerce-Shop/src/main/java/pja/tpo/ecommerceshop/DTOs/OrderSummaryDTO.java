@@ -1,4 +1,4 @@
-package pja.tpo.ecommerceshop.Model.DTOs;
+package pja.tpo.ecommerceshop.DTOs;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,6 +16,15 @@ import java.util.List;
 @Setter
 public class OrderSummaryDTO {
 
+
+    private Long id;
+    private String clientFirstName;
+    private String clientLastName;
+    private LocalDateTime orderDate;
+    private List<OrderItemDTO> orderItems;
+    private Double totalAmount;
+    private String status;
+
     public OrderSummaryDTO(Long id, String clientFirstName, String clientLastName, LocalDateTime orderDate, Double totalAmount, String status) {
         this.id = id;
         this.clientFirstName = clientFirstName;
@@ -23,12 +32,6 @@ public class OrderSummaryDTO {
         this.orderDate = orderDate;
         this.totalAmount = totalAmount;
         this.status = status;
+        this.orderItems = new ArrayList<>();
     }
-    private Long id;
-    private String clientFirstName;
-    private String clientLastName;
-    private LocalDateTime orderDate;
-    private List<OrderItemDTO> orderItems = new ArrayList<>();
-    private Double totalAmount;
-    private String status;
 }

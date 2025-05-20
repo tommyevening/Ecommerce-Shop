@@ -1,11 +1,10 @@
 package pja.tpo.ecommerceshop.Service;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pja.tpo.ecommerceshop.Model.Address;
 import pja.tpo.ecommerceshop.Model.Client;
-import pja.tpo.ecommerceshop.Model.DTOs.ClientCreateDTO;
+import pja.tpo.ecommerceshop.DTOs.ClientCreateDTO;
 import pja.tpo.ecommerceshop.Repository.AddressRepository;
 import pja.tpo.ecommerceshop.Repository.ClientRepository;
 

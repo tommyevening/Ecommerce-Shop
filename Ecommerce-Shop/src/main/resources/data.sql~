@@ -16,20 +16,20 @@ INSERT INTO Client (first_name, last_name, email, phone_number, address_id) VALU
 
 -- Wstawianie kategorii
 INSERT INTO Category (name, description) VALUES
-                                             ('Elektronika', 'Sprzęt elektroniczny i akcesoria'),
-                                             ('Książki', 'Literatura różnych gatunków'),
-                                             ('Odzież', 'Ubrania dla każdego'),
-                                             ('Sport', 'Akcesoria i sprzęt sportowy'),
-                                             ('Dom i Ogród', 'Wyposażenie domu i ogrodu');
+('Elektronika', 'Sprzęt elektroniczny i akcesoria'),
+('Książki', 'Literatura różnych gatunków'),
+('Odzież', 'Ubrania dla każdego'),
+('Sport', 'Akcesoria i sprzęt sportowy'),
+('Dom i Ogród', 'Wyposażenie domu i ogrodu');
 
 -- Wstawianie produktów
 INSERT INTO Product (category_id, name, description, price, quantity) VALUES
-                                                                          (1, 'Smartfon XYZ', 'Najnowszy model smartfona', 1999.99, 50),
-                                                                          (1, 'Laptop ABC', 'Wydajny laptop do pracy', 3999.99, 30),
-                                                                          (2, 'Władca Pierścieni', 'Trylogia w twardej oprawie', 129.99, 100),
-                                                                          (3, 'Kurtka zimowa', 'Ciepła kurtka na zimę', 299.99, 75),
-                                                                          (4, 'Piłka do koszykówki', 'Profesjonalna piłka', 89.99, 60),
-                                                                          (5, 'Zestaw narzędzi', 'Komplet podstawowych narzędzi', 199.99, 40);
+(1, 'Smartfon XYZ', 'Najnowszy model smartfona', 1999.99, 50),
+(1, 'Laptop ABC', 'Wydajny laptop do pracy', 3999.99, 30),
+(2, 'Władca Pierścieni', 'Trylogia w twardej oprawie', 129.99, 100),
+(3, 'Kurtka zimowa', 'Ciepła kurtka na zimę', 299.99, 75),
+(4, 'Piłka do koszykówki', 'Profesjonalna piłka', 89.99, 60),
+(5, 'Zestaw narzędzi', 'Komplet podstawowych narzędzi', 199.99, 40);
 
 -- Wstawianie płatności
 INSERT INTO Payment (payment_date, payment_method) VALUES
@@ -49,11 +49,11 @@ INSERT INTO Orders (client_id, order_date, total_amount, status, payment_id) VAL
 
 -- Wstawianie elementów zamówień
 INSERT INTO OrderItem (order_id, product_id, quantity, price_at_purchase) VALUES
-                                                                              (1, 1, 1, 1999.99),
-                                                                              (1, 3, 1, 129.99),
-                                                                              (2, 2, 1, 3999.99),
-                                                                              (3, 4, 1, 299.99),
-                                                                              (3, 5, 1, 89.98),
-                                                                              (4, 6, 1, 199.99),
-                                                                              (5, 1, 2, 1999.99),
-                                                                              (5, 3, 2, 129.99);
+(1, 1, 1, 1999.99),
+(1, 3, 1, 129.99),
+(2, 2, 1, 3999.99),
+(3, 4, 1, 299.99),
+(3, 5, 1, 89.98),
+(4, 6, 1, 199.99),
+(5, 1, 2, 1999.99),
+(5, 3, 2, 129.99);

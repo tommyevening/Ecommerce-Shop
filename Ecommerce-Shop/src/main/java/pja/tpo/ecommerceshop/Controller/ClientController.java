@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import pja.tpo.ecommerceshop.Model.Client;
-import pja.tpo.ecommerceshop.Model.DTOs.ClientCreateDTO;
+import pja.tpo.ecommerceshop.DTOs.ClientCreateDTO;
 import pja.tpo.ecommerceshop.Service.ClientService;
 
 import java.util.List;
