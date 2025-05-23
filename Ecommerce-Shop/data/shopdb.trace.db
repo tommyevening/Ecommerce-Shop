@@ -2,3 +2,11 @@
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "SELECT * [*]p.name, p.category, p.price FROM Product p"
 Syntax error in SQL statement "SELECT * [*]p.name, p.category, p.price FROM Product p"; SQL statement:
 SELECT * p.name, p.category, p.price FROM Product p [42000-232]
+2025-05-22 15:28:10.250836+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabela "CLIENTS" nie istnieje
+Table "CLIENTS" not found; SQL statement:
+SELECT * FROM Clients [42102-232]
+2025-05-22 20:31:27.844661+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "[*]SEELCT * FROM Client"; oczekiwano "SAVEPOINT, SCRIPT, SHUTDOWN"
+Syntax error in SQL statement "[*]SEELCT * FROM Client"; expected "SAVEPOINT, SCRIPT, SHUTDOWN"; SQL statement:
+SEELCT * FROM Client [42001-232]

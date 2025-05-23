@@ -2,12 +2,14 @@ package pja.tpo.ecommerceshop.Service;
 
 
 import org.springframework.stereotype.Service;
+import pja.tpo.ecommerceshop.DTOs.CategoryDTO;
 import pja.tpo.ecommerceshop.DTOs.OrderItemDTO;
 import pja.tpo.ecommerceshop.DTOs.OrderSummaryDTO;
 import pja.tpo.ecommerceshop.DTOs.ProductGetDTO;
 import pja.tpo.ecommerceshop.Model.Category;
 import pja.tpo.ecommerceshop.Model.Order;
 import pja.tpo.ecommerceshop.Model.OrderItem;
+import pja.tpo.ecommerceshop.Model.Product;
 import pja.tpo.ecommerceshop.Repository.OrderItemRepository;
 import pja.tpo.ecommerceshop.Repository.OrderRepository;
 
@@ -59,11 +61,8 @@ public class OrderService {
 
         for (OrderItem item : orderItems) {
 
-            ProductGetDTO productGetDTO = new ProductGetDTO(
-                    item.getProduct().getName(),
-                    item.getProduct().getCategory(),
-                    item.getProduct().getPrice()
-            );
+            ProductGetDTO productGetDTO = toProductGetDTO(item.getProduct());
+
             OrderItemDTO orderItemDTO = new OrderItemDTO();
             orderItemDTO.setId(item.getId());
             orderItemDTO.setOrderId(item.getOrder().getId());
@@ -77,5 +76,11 @@ public class OrderService {
         orderSummary.setOrderItems(orderItemDTOs);
 
         return orderSummary;
+    }
+
+    public ProductGetDTO toProductGetDTO(Product product) {
+        Category category = product.getCategory();
+        CategoryDTO categoryDTO = new CategoryDTO(category.getId(), category.getName(), category.getDescription());
+        return new ProductGetDTO(product.getName(), categoryDTO, product.getPrice());
     }
 }

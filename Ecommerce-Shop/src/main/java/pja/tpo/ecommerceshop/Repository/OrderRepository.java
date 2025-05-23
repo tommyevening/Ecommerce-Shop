@@ -14,6 +14,7 @@ import java.util.Optional;
 public interface OrderRepository extends JpaRepository<Order, Long> {
 
     Optional<Order> findOrderById(Long id);
+    void deleteByClientId(Long id);
 
     @Query("SELECT new pja.tpo.ecommerceshop.DTOs.OrderSummaryDTO(o.id, c.firstName, c.lastName, o.orderDate, o.totalAmount, o.status) " +
             "FROM Order o JOIN o.client c")

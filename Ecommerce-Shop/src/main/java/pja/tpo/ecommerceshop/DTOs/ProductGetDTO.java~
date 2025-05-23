@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pja.tpo.ecommerceshop.Model.Category;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,7 +18,7 @@ public class ProductGetDTO {
     // Explicit constructor matching the query parameters
     public ProductGetDTO(String name, Category category, Double price) {
         this.name = name;
-        this.category = new CategoryDTO(category.getId(), category.getName(), category.getDescription());
+        this.category = category;
         this.price = price;
     }
 }

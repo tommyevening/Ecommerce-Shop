@@ -1,0 +1,18 @@
+package pja.tpo.ecommerceshop.Specification;
+
+import org.springframework.data.jpa.domain.Specification;
+import pja.tpo.ecommerceshop.Model.Client;
+
+public class ClientSpecification {
+    public static Specification<Client> hasFirstName(String firstName) {
+        return (root, query, cb) -> firstName == null ? null : cb.equal(root.get("firstName"), firstName);
+    }
+
+    public static Specification<Client> hasLastName(String lastName) {
+        return (root, query, cb) -> lastName == null ? null : cb.equal(root.get("lastName"), lastName);
+    }
+
+    public static Specification<Client> hasEmail(String email) {
+        return (root, query, cb) -> email == null ? null : cb.equal(root.get("email"), email);
+    }
+}
