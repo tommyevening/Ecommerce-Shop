@@ -18,16 +18,4 @@ public class ClientGetDTO {
     private String email;
     private String phoneNumber;
     private String address;
-    private String city;
-    private String postalCode;
-    private String country;
-
-    public ClientGetDTO(Long id, String firstName, String lastName, String email, String phoneNumber, String address) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.address = address;
-    }
 }

@@ -28,10 +28,8 @@ public class Client {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-
-    @ManyToOne
-    @JoinColumn(name = "address_id")
-    private Address adress;
+    @Column(name = "address")
+     private String address;
 
     @Override
     public String toString() {

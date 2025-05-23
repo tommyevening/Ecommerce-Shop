@@ -25,15 +25,6 @@ public class ClientCreateDTO {
     @NotBlank(message = "Phone number is required")
     private String phoneNumber;
 
-    @NotBlank(message = "Street is required")
-    private String street;
-
-    @NotBlank(message = "City is required")
-    private String city;
-
-    @NotBlank(message = "Postal code is required")
-    private String postalCode;
-
-    @NotBlank(message = "Country is required")
-    private String country;
+    @NotBlank(message = "Address is required")
+    private String address;
 }

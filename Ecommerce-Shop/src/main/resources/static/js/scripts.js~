@@ -39,7 +39,7 @@ document.getElementById('editClientForm').addEventListener('submit', function(e)
         lastName: document.getElementById('editLastName').value,
         email: document.getElementById('editEmail').value,
         phoneNumber: document.getElementById('editPhoneNumber').value,
-        address: document.getElementById('editAddress').value
+        adress: document.getElementById('editAddress').value
     };
     fetch('/clients/' + id, {
         method: 'PUT',

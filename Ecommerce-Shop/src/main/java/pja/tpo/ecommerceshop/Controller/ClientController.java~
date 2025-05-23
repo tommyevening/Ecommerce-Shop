@@ -3,6 +3,7 @@ package pja.tpo.ecommerceshop.Controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pja.tpo.ecommerceshop.DTOs.ClientGetDTO;
@@ -46,9 +47,9 @@ public class ClientController {
             @RequestParam(required = false) String lastName,
             @RequestParam(required = false) String email,
             @RequestParam(required = false) String phoneNumber,
-            @RequestParam(required = false) String street,
+            @RequestParam(required = false) String address,
             Model model) {
-        List<ClientGetDTO> clients = clientService.searchClients(firstName, lastName, email, phoneNumber, street);
+        List<ClientGetDTO> clients = clientService.searchClients(firstName, lastName, email, phoneNumber, address);
         model.addAttribute("clients", clients);
         return "searchClient";
     }
@@ -62,6 +63,19 @@ public class ClientController {
         }catch (Exception e){
             return ResponseEntity.badRequest().build();
         }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteClient(@PathVariable Long id) {
+        clientService.deleteClient(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/add")
+    public String registerClient(@ModelAttribute("clientCreateDTO") ClientCreateDTO clientCreateDTO, Model model) {
+        model.addAttribute("clientCreateDTO", clientCreateDTO);
+        clientService.createClient(clientCreateDTO);
+        return "searchClient";
     }
 
 }

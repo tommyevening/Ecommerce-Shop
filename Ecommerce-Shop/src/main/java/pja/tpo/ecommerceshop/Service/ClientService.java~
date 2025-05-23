@@ -68,7 +68,7 @@ public class ClientService {
         clientToUpdate.setLastName(client.getLastName());
         clientToUpdate.setEmail(client.getEmail());
         clientToUpdate.setPhoneNumber(client.getPhoneNumber());
-        clientToUpdate.setAddress(client.getAddress());
+        clientToUpdate.setAddress(clientToUpdate.getAddress());
 
         clientRepository.save(clientToUpdate);
     }
